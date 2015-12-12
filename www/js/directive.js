@@ -1,5 +1,4 @@
 angular.module('starter.controllers')
-
 .directive('map', MapDtv);
 
 function MapDtv() {
@@ -27,11 +26,10 @@ function MapDtv() {
 
       google.maps.event.addListener(marker, 'dragend', function(evt) {
         console.log('Current Latitude:',evt.latLng.lat(),'Current Longitude:',evt.latLng.lng());
-        scope.$parent.user.latitude = evt.latLng.lat();
-        scope.$parent.user.longitude = evt.latLng.lng();
-        scope.$apply();
+        scope.$parent.map.user.latitude = evt.latLng.lat();
+        scope.$parent.map.user.longitude = evt.latLng.lng();
+        // scope.$apply();        
       });
     }
   };
-
 };
