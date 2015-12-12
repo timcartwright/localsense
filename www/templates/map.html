@@ -1,0 +1,20 @@
+<ion-view title="LocalSense">
+  <ion-content>
+
+    <div>
+      <div id="map" map lat="52" lng="0" zoom="8">
+      </div>
+
+      <div width="80%" class="list list-inset" style="margin-left:10%;margin-right:10%;">
+        <label class="item item-input">
+            <input type="text" ng-model="map.user.desc" placeholder="Description">
+        </label>
+
+        <button class="button button-full button-positive" ng-click="map.saveDetails()">
+            Save
+        </button>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
