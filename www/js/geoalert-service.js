@@ -4,11 +4,11 @@ angular.module('starter.controllers')
 function GeoAlert($ionicPopup, $cordovaGeolocation) {
 
   var proximityCheck;
-  var duration = 10000;
+  var duration = 10000; // Time in ms between location checks
   var long, lat;
   var processing = false;
   var callback;
-  var minDistance = 0.1;
+  var minDistance = 0.1; // Distance in km from target to trigger a hit
 
   return {
     begin:function(lt,lg,cb) {

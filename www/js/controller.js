@@ -4,6 +4,8 @@ angular.module('starter.controllers', ['ionic','firebase'])
 function MapCtrl($firebase, $ionicPopup, GeoAlert) {
 
   var map = this;
+
+  // Initiate Firebase
   var firebaseObj = new Firebase("https://localsense.firebaseio.com/MapDetails");
   var fb = $firebase(firebaseObj);
 
@@ -17,12 +19,17 @@ function MapCtrl($firebase, $ionicPopup, GeoAlert) {
   };
 
   map.saveDetails = function() {
+    // Get location from map marker
     var lat = map.user.latitude || 17;
     var lgt = map.user.longitude || 78;
 
+    // End the previous game
     GeoAlert.end();
+
+    // Call startGame using the map marker as target
     map.startGame(lat, lgt);
 
+    // Store Marker position in Firebase
     fb.$push({
       latitude: lat,
       longitude: lgt
@@ -38,7 +45,9 @@ function MapCtrl($firebase, $ionicPopup, GeoAlert) {
     
     map.showAlert('LocalSense', 'Game Started!!');
     
+    // Begin the game using the GeoAlert service
     GeoAlert.begin(latitude, longitude, function() {
+      // Callback function run when target is reached
       console.log('TARGET');
       GeoAlert.end();
       map.showAlert('LocalSense', "You're there!!"); 
