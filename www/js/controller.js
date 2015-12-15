@@ -35,7 +35,7 @@ function MapCtrl($firebase, $ionicPopup, GeoAlert) {
       longitude: lgt
     }).then(function(ref) {
       map.user.desc = '';
-      map.showAlert('LocalSense', 'Your location has been saved!!');
+      // map.showAlert('LocalSense', 'Your location has been saved!!');
     }, function(error) {
       console.log('Error:', error); 
     });

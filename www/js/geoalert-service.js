@@ -50,7 +50,7 @@ function GeoAlert($ionicPopup, $cordovaGeolocation) {
     console.log('hb running');
     if(processing) return;
     processing = true;
-    var posOptions = {timeout: 20000, enableHighAccuracy: true};
+    var posOptions = {timeout: 60000, enableHighAccuracy: true, maximumAge: 0};
     $cordovaGeolocation.getCurrentPosition(posOptions)
       .then(function(position) {
         processing = false;
@@ -58,7 +58,8 @@ function GeoAlert($ionicPopup, $cordovaGeolocation) {
         console.log(position.coords.latitude, position.coords.longitude);
         var dist = getDistanceFromLatLonInKm(lat, long, position.coords.latitude, position.coords.longitude);
         console.log("dist in km is "+dist);
-        showAlert('LocalSense', 'You are ' + dist + ' km away.');
+        console.log("accuracy is "+position.coords.accuracy);
+        showAlert('LocalSense', 'You are ' + dist + ' km away (accuracy ' + position.coords.accuracy + ' m)');
         if(dist <= minDistance) callback();
       }, function(error) {
         console.log('error:', error);
