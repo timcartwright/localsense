@@ -4,7 +4,7 @@ angular.module('starter.controllers')
 function GeoAlert($ionicPopup, $cordovaGeolocation) {
 
   var proximityCheck;
-  var duration = 10000; // Time in ms between location checks
+  var duration = 30000; // Time in ms between location checks
   var long, lat;
   var processing = false;
   var callback;
